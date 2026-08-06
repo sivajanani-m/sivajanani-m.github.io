@@ -1,3 +1,5 @@
+
+Index · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +8,7 @@
   <title>From Fossils to Stars: Stories & Science</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
-
+ 
     :root {
       --bg: #0f0e17;
       --surface: #1a1929;
@@ -17,9 +19,9 @@
       --text-muted: #a7a9be;
       --border: #2e2d3d;
     }
-
+ 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
+ 
     body {
       background: var(--bg);
       color: var(--text);
@@ -28,7 +30,7 @@
       line-height: 1.7;
       min-height: 100vh;
     }
-
+ 
     /* STARS BACKGROUND */
     body::before {
       content: '';
@@ -49,7 +51,7 @@
       pointer-events: none;
       z-index: 0;
     }
-
+ 
     header {
       position: relative;
       z-index: 1;
@@ -57,7 +59,7 @@
       padding: 60px 20px 40px;
       border-bottom: 1px solid var(--border);
     }
-
+ 
     .site-tag {
       font-size: 0.75rem;
       letter-spacing: 0.2em;
@@ -65,7 +67,7 @@
       color: var(--accent2);
       margin-bottom: 12px;
     }
-
+ 
     h1 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2rem, 5vw, 3.2rem);
@@ -77,14 +79,14 @@
       line-height: 1.2;
       margin-bottom: 8px;
     }
-
+ 
     .subtitle {
       font-size: 1rem;
       color: var(--text-muted);
       font-style: italic;
       font-family: 'Playfair Display', serif;
     }
-
+ 
     nav {
       display: flex;
       justify-content: center;
@@ -94,7 +96,7 @@
       z-index: 1;
       border-bottom: 1px solid var(--border);
     }
-
+ 
     nav a {
       color: var(--text-muted);
       text-decoration: none;
@@ -103,9 +105,9 @@
       text-transform: uppercase;
       transition: color 0.2s;
     }
-
+ 
     nav a:hover { color: var(--accent1); }
-
+ 
     .tag-pill {
       display: inline-block;
       padding: 3px 10px;
@@ -116,12 +118,12 @@
       font-weight: 500;
       margin-right: 4px;
     }
-
+ 
     .tag-dino    { background: rgba(232,168,124,0.15); color: var(--accent1); }
     .tag-space   { background: rgba(126,200,227,0.15); color: var(--accent2); }
     .tag-books   { background: rgba(168,216,168,0.15); color: var(--accent3); }
     .tag-hp      { background: rgba(180,130,220,0.15); color: #c49ee0; }
-
+ 
     main {
       position: relative;
       z-index: 1;
@@ -129,7 +131,7 @@
       margin: 0 auto;
       padding: 50px 20px;
     }
-
+ 
     .section-label {
       font-size: 0.7rem;
       letter-spacing: 0.25em;
@@ -139,7 +141,7 @@
       padding-bottom: 10px;
       border-bottom: 1px solid var(--border);
     }
-
+ 
     /* FEATURED POST */
     .featured {
       background: var(--surface);
@@ -150,7 +152,7 @@
       position: relative;
       overflow: hidden;
     }
-
+ 
     .featured::before {
       content: '';
       position: absolute;
@@ -158,13 +160,13 @@
       width: 4px; height: 100%;
       background: linear-gradient(180deg, var(--accent1), var(--accent2));
     }
-
+ 
     .featured .post-meta {
       font-size: 0.78rem;
       color: var(--text-muted);
       margin-bottom: 12px;
     }
-
+ 
     .featured h2 {
       font-family: 'Playfair Display', serif;
       font-size: 1.7rem;
@@ -172,13 +174,13 @@
       margin-bottom: 14px;
       line-height: 1.3;
     }
-
+ 
     .featured p {
       color: var(--text-muted);
       font-size: 0.95rem;
       margin-bottom: 20px;
     }
-
+ 
     .read-more {
       display: inline-flex;
       align-items: center;
@@ -189,9 +191,9 @@
       font-weight: 500;
       transition: gap 0.2s;
     }
-
+ 
     .read-more:hover { gap: 10px; }
-
+ 
     /* POST GRID */
     .posts-grid {
       display: grid;
@@ -199,7 +201,7 @@
       gap: 20px;
       margin-bottom: 48px;
     }
-
+ 
     .post-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -207,18 +209,18 @@
       padding: 24px;
       transition: border-color 0.2s, transform 0.2s;
     }
-
+ 
     .post-card:hover {
       border-color: var(--accent2);
       transform: translateY(-2px);
     }
-
+ 
     .post-card .post-meta {
       font-size: 0.75rem;
       color: var(--text-muted);
       margin-bottom: 10px;
     }
-
+ 
     .post-card h3 {
       font-family: 'Playfair Display', serif;
       font-size: 1.15rem;
@@ -226,13 +228,13 @@
       margin-bottom: 10px;
       line-height: 1.4;
     }
-
+ 
     .post-card p {
       color: var(--text-muted);
       font-size: 0.85rem;
       margin-bottom: 16px;
     }
-
+ 
     /* ABOUT SECTION */
     .about-box {
       background: var(--surface);
@@ -241,18 +243,18 @@
       padding: 28px;
       margin-bottom: 48px;
     }
-
+ 
     .about-box h2 {
       font-family: 'Playfair Display', serif;
       font-size: 1.3rem;
       margin-bottom: 12px;
     }
-
+ 
     .about-box p {
       color: var(--text-muted);
       font-size: 0.9rem;
     }
-
+ 
     footer {
       position: relative;
       z-index: 1;
@@ -265,13 +267,13 @@
   </style>
 </head>
 <body>
-
+ 
   <header>
     <p class="site-tag">A blog by Sivajanani Mohanraj</p>
     <h1>From Fossils to Stars</h1>
     <p class="subtitle">Stories & Science</p>
   </header>
-
+ 
   <nav>
     <a href="#">Home</a>
     <a href="#">Dinosaurs</a>
@@ -279,9 +281,9 @@
     <a href="#">Books</a>
     <a href="#">About</a>
   </nav>
-
+ 
   <main>
-
+ 
     <!-- ============================================================
          FEATURED POST
          To update: change the tags, date, title, and description below
@@ -298,9 +300,9 @@
         is far more interesting. Every time you see a bird, you're looking at a living dinosaur.
         Here's what the fossil record actually tells us, and why it changes everything.
       </p>
-      <a href="#" class="read-more">Read more →</a>
+      <a href="post-unearthed-review.html" class="read-more">Read more →</a>
     </div>
-
+ 
     <!-- ============================================================
          RECENT POSTS
          To add a new post: copy one <article class="post-card"> block,
@@ -308,7 +310,7 @@
     ============================================================ -->
     <p class="section-label">✦ Recent Posts</p>
     <div class="posts-grid">
-
+ 
       <article class="post-card">
         <p class="post-meta">
           <span class="tag-pill tag-books">Books</span>
@@ -318,7 +320,7 @@
         <p>The books hit completely differently when you know what's coming. Here's what I noticed the second time around.</p>
         <a href="#" class="read-more">Read more →</a>
       </article>
-
+ 
       <article class="post-card">
         <p class="post-meta">
           <span class="tag-pill tag-space">Aerospace</span>
@@ -328,7 +330,7 @@
         <p>Re-entry is one of the most intense moments in spaceflight. I went down a research rabbit hole so you don't have to.</p>
         <a href="#" class="read-more">Read more →</a>
       </article>
-
+ 
       <article class="post-card">
         <p class="post-meta">
           <span class="tag-pill tag-dino">Dinosaurs</span>
@@ -338,7 +340,7 @@
         <p>Paleontologists keep finding things that rewrite what we thought we knew. This one is particularly surprising.</p>
         <a href="#" class="read-more">Read more →</a>
       </article>
-
+ 
       <article class="post-card">
         <p class="post-meta">
           <span class="tag-pill tag-books">Books</span>
@@ -348,9 +350,9 @@
         <p>A short list of books that actually made me excited to learn — no textbooks, I promise.</p>
         <a href="#" class="read-more">Read more →</a>
       </article>
-
+ 
     </div>
-
+ 
     <!-- ============================================================
          ABOUT
          Change this to say whatever you want about yourself!
@@ -364,13 +366,14 @@
         Think of it as a public notebook from someone who asks a lot of questions.
       </p>
     </div>
-
+ 
   </main>
-
+ 
   <footer>
     From Fossils to Stars: Stories & Science &nbsp;·&nbsp; Made with curiosity<br>
     <span style="font-size:0.75rem; margin-top:6px; display:inline-block;">© Sivajanani Mohanraj. Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--text-muted);">CC BY 4.0</a> — you may share with credit.</span>
   </footer>
-
+ 
 </body>
 </html>
+ 
