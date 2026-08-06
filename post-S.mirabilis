@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Spinosaurus Discovery | From Fossils to Stars</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
+ 
+    :root {
+      --bg: #0f0e17;
+      --surface: #1a1929;
+      --accent1: #e8a87c;
+      --accent2: #7ec8e3;
+      --accent3: #a8d8a8;
+      --text: #fffffe;
+      --text-muted: #a7a9be;
+      --border: #2e2d3d;
+    }
+ 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+ 
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 50% 10%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 25%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 20% 75%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 60% 85%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 80%, rgba(255,255,255,0.3) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+ 
+    header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 30px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    header a {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+ 
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      padding: 16px 20px;
+      position: relative;
+      z-index: 1;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+ 
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+ 
+    nav a:hover, nav a.active { color: var(--accent1); }
+ 
+    article {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 20px 80px;
+    }
+ 
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+ 
+    .tag-pill {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      background: rgba(232,168,124,0.15);
+      color: var(--accent1);
+    }
+ 
+    .meta-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+ 
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+ 
+    .post-intro {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .post-body p {
+      margin-bottom: 22px;
+      font-size: 1rem;
+      color: #d8d8e8;
+    }
+ 
+    .post-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--accent1);
+      margin: 36px 0 14px;
+    }
+ 
+    .highlight-box {
+      background: var(--surface);
+      border-left: 3px solid var(--accent1);
+      border-radius: 0 8px 8px 0;
+      padding: 18px 22px;
+      margin: 28px 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+ 
+    .post-body img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 20px 0 8px;
+    }
+ 
+    .img-caption {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 24px !important;
+    }
+ 
+    .source-note {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+ 
+    .source-note a {
+      color: var(--accent2);
+      text-decoration: none;
+    }
+ 
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+ 
+  <header>
+    <a href="index.html">From Fossils to Stars: Stories & Science</a>
+  </header>
+ 
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="dinosaurs.html" class="active">Dinosaurs</a>
+    <a href="space.html">Space</a>
+    <a href="books.html">Books</a>
+    <a href="soccer.html">Soccer</a>
+    <a href="about.html">About</a>
+  </nav>
+ 
+  <article>
+ 
+    <div class="post-meta">
+      <span class="tag-pill">Dinosaurs</span>
+      <span class="meta-text">August 2026 &nbsp;·&nbsp; 5 min read</span>
+    </div>
+ 
+    <h1>Scientists Just Found a New Spinosaurus — and It Has a Sword on Its Head</h1>
+ 
+    <p class="post-intro">
+      A new species of one of the most famous dinosaurs ever was just named in 2026,
+      and it came from one of the last places you'd expect to find a fish-eating giant:
+      the Sahara Desert.
+    </p>
+ 
+    <div class="post-body">
+ 
+      <h2>What is Spinosaurus mirabilis?</h2>
+ 
+      <p>
+        In February 2026, scientists announced a brand new dinosaur discovery. This species is
+        called <em>Spinosaurus mirabilis</em>. Now, I know what you might be thinking — "wait,
+        isn't the scientific name for Spinosaurus already <em>Spinosaurus aegyptiacus</em>?" And
+        yes, that's a real species. But <em>S. mirabilis</em> is actually an entirely different
+        species within the Spinosaurus family, not just a new fossil of the one we already knew.
+      </p>
+ 
+      <p>
+        Scientists found its bones in the Sahara Desert in Niger, which might sound confusing at
+        first — Spinosaurus are amphibious fish-eaters, so what are they doing in the middle of
+        a desert? But here's the thing: 95 million years ago, the Sahara wasn't a desert at all.
+        It was a thriving wetland full of rivers, lakes, and massive fish. The world looked
+        completely different back then.
+      </p>
+ 
+      <p>
+        And unlike <em>Spinosaurus aegyptiacus</em>, which was found closer to ancient coastal
+        environments, <em>S. mirabilis</em> was discovered deep inland along river systems. That
+        actually tells us something important — it supports the idea that these dinosaurs hunted
+        more like giant herons, stalking prey along riverbanks and shallow waters, rather than
+        diving in like fully aquatic predators.
+      </p>
+ 
+      <h2>The Crest</h2>
+ 
+      <img src="https://www.nhm.ac.uk/content/dam/nhm-www/discover/new-spinosaurus/New-spinosaurus-spinosaurus-mirabilis-aegypticus-skull-comparison-two-column-keith-ladzinski.jpg" alt="Skull comparison of Spinosaurus mirabilis and Spinosaurus aegyptiacus" />
+      <p class="img-caption">Skull comparison of S. mirabilis (top) and S. aegyptiacus (bottom). © Keith Ladzinski / NHM</p>
+ 
+      <p>
+        <em>S. mirabilis</em> had one of the most unique crest designs of any dinosaur we've found.
+        It was massive, curved, and scimitar-shaped — and I keep thinking about what it would have
+        looked like from above the water's surface. Maybe something like a shark fin? Just… much weirder.
+      </p>
+ 
+      <p>
+        Scientists think the crest would have been covered in colorful keratin — the same stuff that
+        makes up your fingernails — which made it even more dramatic in real life than the bare bone
+        suggests. It's thought to have been used to attract mates and intimidate rivals. Basically,
+        the more impressive your headgear, the more seriously everyone took you.
+      </p>
+ 
+      <p>
+        When the team was uncovering and studying the fossils, lead researcher Paul Sereno compared
+        the animal to a heron — specifically, a hell heron. Picture something wading slowly into
+        the water on sturdy legs, completely calm, and then — gone. That's <em>S. mirabilis</em> hunting.
+      </p>
+ 
+      <h2>Why This Discovery is a Big Deal</h2>
+ 
+      <p>
+        Here's why this matters more than your average fossil find. The majority of Spinosaurus bones
+        we had were absolutely destroyed in a WWII bombing raid — which means every new specimen is
+        essentially irreplaceable. We're piecing together one of the biggest predators to ever walk
+        the Earth from fragments, and that makes each discovery count way more than it would for,
+        say, a T-Rex.
+      </p>
+ 
+      <p>
+        On top of that, every known specimen of <em>S. mirabilis</em> found so far was a juvenile —
+        about 8 meters long. Which sounds massive until you realize that's not even fully grown.
+        These were the kids. Which means somewhere out there in the fossil record, there are parents
+        we haven't found yet. Pretty big parents.
+      </p>
+ 
+      <div class="source-note">
+        Sources: <a href="https://www.nhm.ac.uk/discover/news/2026/february/new-sabre-crested-spinosaurus-species-named-from-desert-dinosaur-fossils.html" target="_blank">Natural History Museum</a> · <a href="https://www.npr.org/2026/02/22/nx-s1-5722918/new-dinosaur-spinosaurus-fossil-niger-horn-sereno" target="_blank">NPR</a>
+      </div>
+ 
+    </div>
+  </article>
+ 
+  <footer>
+    From Fossils to Stars: Stories & Science &nbsp;·&nbsp; Made with curiosity<br>
+    <span style="font-size:0.75rem; margin-top:6px; display:inline-block;">© Sivajanani Mohanraj. Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--text-muted);">CC BY 4.0</a> — you may share with credit.</span>
+  </footer>
+ 
+</body>
+</html>
+ 
