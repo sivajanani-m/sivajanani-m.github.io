@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | From Fossils to Stars</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
+ 
+    :root {
+      --bg: #0f0e17;
+      --surface: #1a1929;
+      --accent1: #e8a87c;
+      --accent2: #7ec8e3;
+      --accent3: #a8d8a8;
+      --text: #fffffe;
+      --text-muted: #a7a9be;
+      --border: #2e2d3d;
+    }
+ 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+ 
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 50% 10%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 25%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 20% 75%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 60% 85%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 80%, rgba(255,255,255,0.3) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+ 
+    header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 30px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    header a {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+ 
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      padding: 16px 20px;
+      position: relative;
+      z-index: 1;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+ 
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+ 
+    nav a:hover, nav a.active { color: var(--accent1); }
+ 
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 20px 80px;
+    }
+ 
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 40px;
+    }
+ 
+    .about-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+ 
+    .about-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--accent1);
+      margin-bottom: 14px;
+    }
+ 
+    .about-section p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+ 
+    .about-section p:last-child { margin-bottom: 0; }
+ 
+    .interests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+ 
+    .interest-tag {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+ 
+    .interest-tag.dino  { border-color: var(--accent1); color: var(--accent1); }
+    .interest-tag.space { border-color: var(--accent2); color: var(--accent2); }
+    .interest-tag.books { border-color: var(--accent3); color: var(--accent3); }
+    .interest-tag.hp    { border-color: #c49ee0; color: #c49ee0; }
+    .interest-tag.soccer { border-color: #f0c060; color: #f0c060; }
+    .interest-tag.lang  { border-color: #e07090; color: #e07090; }
+ 
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+ 
+  <header>
+    <a href="index.html">From Fossils to Stars: Stories & Science</a>
+  </header>
+ 
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="dinosaurs.html">Dinosaurs</a>
+    <a href="space.html">Space</a>
+    <a href="books.html">Books</a>
+    <a href="soccer.html">Soccer</a>
+    <a href="about.html" class="active">About</a>
+  </nav>
+ 
+  <main>
+    <h1>Hey, I'm Sivajanani.</h1>
+ 
+    <div class="about-section">
+      <h2>Who am I?</h2>
+      <p>
+        I'm a 7th grader from Las Vegas, and I write this blog mostly because I like writing — but also
+        because I figured it'd be pretty cool to have a body of work by the time I'm applying to college.
+        I started it before most people my age would even think about that, which I think says something
+        about me (good things, hopefully).
+      </p>
+      <p>
+        I speak English and Tamil, and I'm working on Hindi and Norwegian. Yes, Norwegian. No, I don't
+        fully know why. But here we are.
+      </p>
+    </div>
+ 
+    <div class="about-section">
+      <h2>What I'm into</h2>
+      <p>Here's the full list, in no particular order:</p>
+      <div class="interests">
+        <span class="interest-tag dino">🦕 Dinosaurs</span>
+        <span class="interest-tag space">🚀 Aerospace</span>
+        <span class="interest-tag books">📚 Books</span>
+        <span class="interest-tag hp">⚡ Harry Potter</span>
+        <span class="interest-tag soccer">⚽ Soccer</span>
+      </div>
+    </div>
+ 
+    <div class="about-section">
+      <h2>What this blog is</h2>
+      <p>
+        This is my corner of the internet where I write about whatever I'm curious about — book reviews,
+        dinosaur discoveries, aerospace research, soccer analysis, and everything in between. I try to
+        write things that are actually interesting to read, not just school-report style.
+      </p>
+      <p>
+        I started this for fun, but I also won't pretend the college applications didn't cross my mind.
+        Either way, I'm glad it exists. If you're reading this, hi — I hope you find something worth
+        your time here.
+      </p>
+    </div>
+ 
+  </main>
+ 
+  <footer>
+    From Fossils to Stars: Stories & Science &nbsp;·&nbsp; Made with curiosity<br>
+    <span style="font-size:0.75rem; margin-top:6px; display:inline-block;">© Sivajanani Mohanraj. Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--text-muted);">CC BY 4.0</a> — you may share with credit.</span>
+  </footer>
+ 
+</body>
+</html>
+ 
