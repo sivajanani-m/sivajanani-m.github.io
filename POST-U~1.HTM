@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Unearthed Book 1 Review | From Fossils to Stars</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
+
+    :root {
+      --bg: #0f0e17;
+      --surface: #1a1929;
+      --accent1: #e8a87c;
+      --accent2: #7ec8e3;
+      --accent3: #a8d8a8;
+      --text: #fffffe;
+      --text-muted: #a7a9be;
+      --border: #2e2d3d;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 50% 10%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 25%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 20% 75%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 60% 85%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 80%, rgba(255,255,255,0.3) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 30px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header a {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      padding: 16px 20px;
+      position: relative;
+      z-index: 1;
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    nav a:hover { color: var(--accent1); }
+
+    article {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 20px 80px;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tag-pill {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      background: rgba(168,216,168,0.15);
+      color: var(--accent3);
+    }
+
+    .meta-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .post-intro {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .post-body p {
+      margin-bottom: 22px;
+      font-size: 1rem;
+      color: #d8d8e8;
+    }
+
+    .post-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--accent1);
+      margin: 36px 0 14px;
+    }
+
+    .highlight-box {
+      background: var(--surface);
+      border-left: 3px solid var(--accent2);
+      border-radius: 0 8px 8px 0;
+      padding: 18px 22px;
+      margin: 28px 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .rating {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .rating h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .stars {
+      font-size: 1.8rem;
+      letter-spacing: 4px;
+      margin-bottom: 8px;
+    }
+
+    .rating-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html">From Fossils to Stars: Stories & Science</a>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#">Dinosaurs</a>
+    <a href="#">Space</a>
+    <a href="#">Books</a>
+    <a href="#">About</a>
+  </nav>
+
+  <article>
+
+    <div class="post-meta">
+      <span class="tag-pill">Books</span>
+      <span class="meta-text">August 2026 &nbsp;·&nbsp; 4 min read</span>
+    </div>
+
+    <h1>I Was Not Ready for That Ending: The Unearthed, Book 1</h1>
+
+    <p class="post-intro">
+      A girl who just wants to do her job. A famous boy who just wants to be normal. An alien temple,
+      a mystery that keeps getting bigger, and a cliffhanger that had me literally staring at the
+      last page going "...seriously?"
+    </p>
+
+    <div class="post-body">
+
+      <p>
+        I picked up <em>The Unearthed</em> not totally knowing what I was getting into, and I'm
+        genuinely glad I didn't. Because part of what made it so good was how it kept surprising me
+        with what kind of book it actually was.
+      </p>
+
+      <p>
+        On the surface it looks like an adventure story — and it is — but it's also a story about
+        two very different people figuring out how to trust each other. Amelia is your "just a
+        normal teen" type, and then there's Jules Addison, the son of a famous English scientist.
+        You'd think that setup would get annoying fast (famous person + regular person = predictable
+        drama), but it doesn't. What I liked is that the book doesn't make a huge deal out of the
+        difference. They just... meet, and things develop from there.
+      </p>
+
+      <h2>The Puzzle Scenes Are Everything</h2>
+
+      <p>
+        Okay, my favorite part of the whole book is when they reach the first puzzle in the temple.
+        It's a tuning puzzle — the kind where you have to get sounds or frequencies exactly right —
+        and Amelia is the one who figures it out. I loved this because it wasn't a "suddenly she
+        discovers she's secretly special" moment. She just paid attention and thought carefully, and
+        that was enough. More books should do that.
+      </p>
+
+      <div class="highlight-box">
+        The temple scenes in general have this amazing atmosphere — like you're somewhere ancient
+        and completely alien at the same time. I kept reading way past when I was supposed to stop.
+      </div>
+
+      <h2>The Romance (Done Right, Actually)</h2>
+
+      <p>
+        Can we talk about how rare it is to read a book where the romance is built up slowly and
+        then just... stays there? Not rushed, not overdone, just this quiet tension that keeps
+        growing. You can tell something is developing between Amelia and Jules but the author
+        doesn't shove it in your face. It's the kind of "maybe more than friends" energy that
+        makes you keep reading just to see what happens next.
+      </p>
+
+      <p>
+        I really appreciated that. A lot of YA books either ignore romance completely or make
+        it the whole plot. This one found a balance.
+      </p>
+
+      <h2>That Cliffhanger Though</h2>
+
+      <p>
+        I am going to be so careful here because I don't want to ruin anything for anyone who
+        hasn't read it yet. But I will say this: by the end of this book, things have gone from
+        "mysterious ancient temple" to something way, <em>way</em> bigger. Like, universe-scale bigger.
+      </p>
+
+      <p>
+        The last few pages sent me into a spiral. They end up somewhere they absolutely should not
+        be, they hear something they cannot explain, and then — nothing. Book over. I had to just
+        sit there for a minute.
+      </p>
+
+      <div class="highlight-box">
+        I don't want to spoil it. I'll just say: if you're the kind of person who gets frustrated
+        by cliffhangers, maybe wait until Book 2 is in your hands before you start this one.
+        (I say this from experience.)
+      </div>
+
+      <h2>Final Thoughts</h2>
+
+      <p>
+        <em>The Unearthed</em> is a fast, addictive read that kept me genuinely surprised. The
+        characters feel real, the adventure is exciting without being exhausting, and the slow-burn
+        friendship-maybe-more between Amelia and Jules is exactly the kind of thing I love to read
+        about. My only complaint is the cliffhanger — but honestly, that just means I need Book 2
+        immediately.
+      </p>
+
+      <p>
+        If you're into adventure, a little mystery, a little romance, and a lot of "wait WHAT" —
+        pick this up.
+      </p>
+
+      <div class="rating">
+        <h3>My Rating</h3>
+        <div class="stars">★★★★⯨</div>
+        <p class="rating-note">4.5/5 — docking half a star for emotional damage from that ending</p>
+      </div>
+
+    </div>
+  </article>
+
+  <footer>
+    From Fossils to Stars: Stories & Science &nbsp;·&nbsp; Made with curiosity<br>
+    <span style="font-size:0.75rem; margin-top:6px; display:inline-block;">© Sivajanani Mohanraj. Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--text-muted);">CC BY 4.0</a> — you may share with credit.</span>
+  </footer>
+
+</body>
+</html>
