@@ -108,9 +108,64 @@
     .page-desc {
       color: var(--text-muted);
       font-size: 0.95rem;
-      margin-bottom: 40px;
+      margin-bottom: 28px;
       font-style: italic;
       font-family: 'Playfair Display', serif;
+    }
+
+    .search-wrap {
+      position: relative;
+      margin-bottom: 32px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-input::placeholder { color: var(--text-muted); }
+    .search-input:focus { border-color: var(--accent1); }
+
+    .search-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      z-index: 5;
+    }
+
+    .search-dropdown.open { display: block; }
+
+    .search-result {
+      display: block;
+      padding: 12px 16px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .search-result:last-child { border-bottom: none; }
+    .search-result:hover { background: rgba(255,255,255,0.05); color: var(--accent1); }
+
+    .search-empty {
+      padding: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
     }
 
     .post-card {
@@ -203,6 +258,11 @@
     <h1 class="page-title">🦕 Dinosaurs</h1>
     <p class="page-desc">New discoveries, old bones, and everything in between.</p>
 
+    <div class="search-wrap">
+      <input type="search" class="search-input" id="postSearch" placeholder="Search dinosaur posts..." autocomplete="off" />
+      <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
+
     <!-- ============================================================
          TO ADD A NEW POST: copy the post-card block below,
          paste it above this comment, and update the content.
@@ -224,6 +284,39 @@
     From Fossils to Stars: Stories & Science &nbsp;·&nbsp; Made with curiosity<br>
     <span style="font-size:0.75rem; margin-top:6px; display:inline-block;">© Sivajanani Mohanraj. Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--text-muted);">CC BY 4.0</a> — you may share with credit.</span>
   </footer>
+
+  <script>
+    (function () {
+      const input = document.getElementById('postSearch');
+      const dropdown = document.getElementById('searchDropdown');
+      const posts = Array.from(document.querySelectorAll('.post-card')).map(card => ({
+        el: card,
+        title: card.querySelector('h2').textContent.trim(),
+        desc: card.querySelector('p:not(.post-meta)') ? card.querySelector('p:not(.post-meta)').textContent.trim() : '',
+        href: card.querySelector('a.read-more').getAttribute('href')
+      }));
+
+      function filterPosts(query) {
+        const q = query.trim().toLowerCase();
+        const matches = posts.filter(p => !q || p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q));
+        posts.forEach(p => { p.el.style.display = matches.includes(p) ? '' : 'none'; });
+        return matches;
+      }
+
+      function renderDropdown(matches) {
+        dropdown.innerHTML = matches.length
+          ? matches.map(p => `<a class="search-result" href="${p.href}">${p.title}</a>`).join('')
+          : '<div class="search-empty">No posts found.</div>';
+        dropdown.classList.add('open');
+      }
+
+      function update() { renderDropdown(filterPosts(input.value)); }
+
+      input.addEventListener('focus', update);
+      input.addEventListener('input', update);
+      input.addEventListener('blur', () => setTimeout(() => dropdown.classList.remove('open'), 150));
+    })();
+  </script>
 
 </body>
 </html>

@@ -18,8 +18,18 @@
     nav a:hover, nav a.active { color: var(--accent2); }
     main { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: 50px 20px 80px; }
     .page-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; background: linear-gradient(135deg, var(--accent1), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
-    .page-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 40px; font-style: italic; font-family: 'Playfair Display', serif; }
+    .page-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 28px; font-style: italic; font-family: 'Playfair Display', serif; }
     .empty { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 40px; text-align: center; color: var(--text-muted); font-size: 0.95rem; }
+    .search-wrap { position: relative; margin-bottom: 32px; }
+    .search-input { width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
+    .search-input::placeholder { color: var(--text-muted); }
+    .search-input:focus { border-color: var(--accent2); }
+    .search-dropdown { display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; z-index: 5; }
+    .search-dropdown.open { display: block; }
+    .search-result { display: block; padding: 12px 16px; color: var(--text); text-decoration: none; font-size: 0.85rem; border-bottom: 1px solid var(--border); }
+    .search-result:last-child { border-bottom: none; }
+    .search-result:hover { background: rgba(255,255,255,0.05); color: var(--accent2); }
+    .search-empty { padding: 16px; font-size: 0.85rem; color: var(--text-muted); text-align: center; }
     .post-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px; margin-bottom: 20px; transition: border-color 0.2s, transform 0.2s; }
     .post-card:hover { border-color: var(--accent2); transform: translateY(-2px); }
     .tag-pill { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; background: rgba(126,200,227,0.15); color: var(--accent2); margin-right: 8px; }
@@ -44,6 +54,12 @@
   <main>
     <h1 class="page-title">🚀 Space</h1>
     <p class="page-desc">Rockets, re-entry, and the universe — explained by someone who's still figuring it out.</p>
+
+    <div class="search-wrap">
+      <input type="search" class="search-input" id="postSearch" placeholder="Search space posts..." autocomplete="off" />
+      <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
+
     <!-- TO ADD A NEW POST: copy the post-card block below, paste it above this comment, and update the content. -->
 
     <div class="post-card">
@@ -60,6 +76,39 @@
     From Fossils to Stars: Stories & Science &nbsp;·&nbsp; Made with curiosity<br>
     <span style="font-size:0.75rem; margin-top:6px; display:inline-block;">© Sivajanani Mohanraj. Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--text-muted);">CC BY 4.0</a> — you may share with credit.</span>
   </footer>
+
+  <script>
+    (function () {
+      const input = document.getElementById('postSearch');
+      const dropdown = document.getElementById('searchDropdown');
+      const posts = Array.from(document.querySelectorAll('.post-card')).map(card => ({
+        el: card,
+        title: card.querySelector('h2').textContent.trim(),
+        desc: card.querySelector('p:not(.post-meta)') ? card.querySelector('p:not(.post-meta)').textContent.trim() : '',
+        href: card.querySelector('a.read-more').getAttribute('href')
+      }));
+
+      function filterPosts(query) {
+        const q = query.trim().toLowerCase();
+        const matches = posts.filter(p => !q || p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q));
+        posts.forEach(p => { p.el.style.display = matches.includes(p) ? '' : 'none'; });
+        return matches;
+      }
+
+      function renderDropdown(matches) {
+        dropdown.innerHTML = matches.length
+          ? matches.map(p => `<a class="search-result" href="${p.href}">${p.title}</a>`).join('')
+          : '<div class="search-empty">No posts found.</div>';
+        dropdown.classList.add('open');
+      }
+
+      function update() { renderDropdown(filterPosts(input.value)); }
+
+      input.addEventListener('focus', update);
+      input.addEventListener('input', update);
+      input.addEventListener('blur', () => setTimeout(() => dropdown.classList.remove('open'), 150));
+    })();
+  </script>
 </body>
 </html>
  
