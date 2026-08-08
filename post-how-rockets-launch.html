@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How Does a Rocket Actually Launch? | From Fossils to Stars</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
+ 
+    :root {
+      --bg: #0f0e17;
+      --surface: #1a1929;
+      --accent1: #e8a87c;
+      --accent2: #7ec8e3;
+      --accent3: #a8d8a8;
+      --text: #fffffe;
+      --text-muted: #a7a9be;
+      --border: #2e2d3d;
+    }
+ 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+ 
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 50% 10%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 25%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 20% 75%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 60% 85%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 80%, rgba(255,255,255,0.3) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+ 
+    header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 30px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    header a {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+ 
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      padding: 16px 20px;
+      position: relative;
+      z-index: 1;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+ 
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+ 
+    nav a:hover, nav a.active { color: var(--accent2); }
+ 
+    article {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 20px 80px;
+    }
+ 
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+ 
+    .tag-pill {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      background: rgba(126,200,227,0.15);
+      color: var(--accent2);
+    }
+ 
+    .meta-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+ 
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+ 
+    .post-intro {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .post-body p {
+      margin-bottom: 22px;
+      font-size: 1rem;
+      color: #d8d8e8;
+    }
+ 
+    .post-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--accent2);
+      margin: 36px 0 14px;
+    }
+ 
+    .highlight-box {
+      background: var(--surface);
+      border-left: 3px solid var(--accent2);
+      border-radius: 0 8px 8px 0;
+      padding: 18px 22px;
+      margin: 28px 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+ 
+    .source-note {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+ 
+    .source-note a { color: var(--accent2); text-decoration: none; }
+ 
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+ 
+  <header>
+    <a href="index.html">From Fossils to Stars: Stories & Science</a>
+  </header>
+ 
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="dinosaurs.html">Dinosaurs</a>
+    <a href="space.html" class="active">Space</a>
+    <a href="books.html">Books</a>
+    <a href="soccer.html">Soccer</a>
+    <a href="about.html">About</a>
+  </nav>
+ 
+  <article>
+ 
+    <div class="post-meta">
+      <span class="tag-pill">Space</span>
+      <span class="meta-text">August 2026 &nbsp;·&nbsp; 4 min read</span>
+    </div>
+ 
+    <h1>How Does a Rocket Actually Launch?</h1>
+ 
+    <p class="post-intro">
+      I've been taking a rocket science course on Coursera from the University of Michigan,
+      and it's been making me look at launches completely differently. Here's what I've learned
+      — starting from the very beginning.
+    </p>
+ 
+    <div class="post-body">
+ 
+      <h2>The Basic Idea</h2>
+ 
+      <p>
+        The secret behind every rocket launch comes down to one simple idea: Newton's Third Law
+        — every action has an equal and opposite reaction. When hot gas blasts downward out of
+        the engines at insane speeds, that downward push creates an equal upward push called
+        thrust. For the rocket to actually lift off the launch pad, that thrust has to be greater
+        than the rocket's own weight.
+      </p>
+ 
+      <h2>The Fuel</h2>
+ 
+      <p>
+        For a rocket engine to burn in space, it needs two things: fuel and an oxidizer. Since
+        there's no oxygen in space, rockets have to bring their own supply of something to make
+        the fuel actually combust. There are two main types. Solid fuel rockets mix the fuel and
+        oxidizer together into a rubbery solid that burns from the inside out — once you light it,
+        it's going and there's no stopping it. Liquid fuel rockets, like SpaceX's Falcon 9, use
+        liquid hydrogen or kerosene combined with liquid oxygen. The liquid version is way more
+        controllable — you can throttle it up and down almost like a car engine, which is a big
+        deal when you're trying to land a booster back on a platform in the middle of the ocean.
+      </p>
+ 
+      <h2>Getting to Orbit</h2>
+ 
+      <p>
+        Here's the part that genuinely broke my brain when I first learned it. Just going "up"
+        isn't enough to get to orbit. You also have to go sideways — really, really fast. Orbit
+        basically means falling around Earth so fast that you keep missing it. You need to reach
+        around 17,500 mph for that to work. Most rockets also ditch their lower stages mid-flight
+        to shed weight — that's what you're watching when SpaceX lands their boosters back. Less
+        weight means less fuel needed, which means you can actually make it.
+      </p>
+ 
+<div class="source-note">
+        Sources: <a href="https://aerospaceanswers.com/how-rockets-work-step-by-step-from-ignition-to-orbit/" target="_blank">Aerospace Answers</a> · <a href="https://explorethecosmos.org/how-rockets-work-the-beginners-engineering-explanation/" target="_blank">Explore the Cosmos</a>
+      </div>
+ 
+    </div>
+  </article>
+ 
+  <footer>
+    From Fossils to Stars: Stories & Science &nbsp;·&nbsp; Made with curiosity<br>
+    <span style="font-size:0.75rem; margin-top:6px; display:inline-block;">© Sivajanani Mohanraj. Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--text-muted);">CC BY 4.0</a> — you may share with credit.</span>
+  </footer>
+ 
+</body>
+</html>
+ 
