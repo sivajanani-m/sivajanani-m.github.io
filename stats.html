@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Stats | From Fossils to Stars</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
+
+    :root {
+      --bg: #0f0e17;
+      --surface: #1a1929;
+      --accent1: #e8a87c;
+      --accent2: #7ec8e3;
+      --accent3: #a8d8a8;
+      --text: #fffffe;
+      --text-muted: #a7a9be;
+      --border: #2e2d3d;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 50% 10%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 25%, rgba(255,255,255,0.5) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 30px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header a {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      padding: 16px 20px;
+      position: relative;
+      z-index: 1;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav a:hover, nav a.active { color: var(--accent2); }
+
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 50px 20px 80px;
+    }
+
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .page-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .unlisted-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+
+    .total-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .total-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .total-stat .label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 20px;
+      margin-bottom: 10px;
+    }
+
+    .page-row a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .page-row a:hover { color: var(--accent2); }
+
+    .page-row .counts {
+      display: flex;
+      gap: 18px;
+      flex-shrink: 0;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .page-row .counts strong { color: var(--text); font-weight: 500; }
+
+    .loading, .error-box {
+      text-align: center;
+      color: var(--text-muted);
+      padding: 30px;
+      font-size: 0.9rem;
+    }
+
+    .dashboard-link {
+      margin-top: 36px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    .dashboard-link a { color: var(--accent2); text-decoration: none; }
+    .dashboard-link a:hover { text-decoration: underline; }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html">From Fossils to Stars: Stories & Science</a>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="dinosaurs.html">Dinosaurs</a>
+    <a href="space.html">Space</a>
+    <a href="books.html">Books</a>
+    <a href="soccer.html">Soccer</a>
+    <a href="about.html">About</a>
+    <a href="stats.html" class="active">Stats</a>
+  </nav>
+
+  <main>
+    <h1 class="page-title">📊 Site Stats</h1>
+    <p class="page-desc">Just for me — seeing who's stopping by.</p>
+    <p class="unlisted-note">This page isn't linked anywhere else on the site — bookmark it to find it again.</p>
+
+    <div class="total-card" id="totalCard">
+      <div class="loading">Loading totals...</div>
+    </div>
+
+    <p class="section-label">✦ Per-Page Breakdown</p>
+    <div id="pageBreakdown">
+      <div class="loading">Loading visit counts...</div>
+    </div>
+
+    <p class="dashboard-link">
+      For charts and trends over time, see the
+      <a href="https://fossilstostars.goatcounter.com/" target="_blank" rel="noopener">full GoatCounter dashboard →</a>
+    </p>
+  </main>
+
+  <footer>
+    From Fossils to Stars: Stories & Science &nbsp;·&nbsp; Made with curiosity
+  </footer>
+
+  <script>
+    (function () {
+      const SITE = 'https://fossilstostars.goatcounter.com';
+
+      // TO ADD A NEW POST/PAGE: add an entry here so it shows in the breakdown.
+      const PAGES = [
+        { label: 'Home', path: '/', href: 'index.html' },
+        { label: 'Dinosaurs', path: '/dinosaurs.html', href: 'dinosaurs.html' },
+        { label: 'Space', path: '/space.html', href: 'space.html' },
+        { label: 'Books', path: '/books.html', href: 'books.html' },
+        { label: 'Soccer', path: '/soccer.html', href: 'soccer.html' },
+        { label: 'About', path: '/about.html', href: 'about.html' },
+        { label: 'Post: The Unearthed Review', path: '/post-unearthed-review.html', href: 'post-unearthed-review.html' },
+        { label: 'Post: Spinosaurus Discovery', path: '/post-spinosaurus-mirabilis.html', href: 'post-spinosaurus-mirabilis.html' },
+        { label: 'Post: How Rockets Launch', path: '/post-how-rockets-launch.html', href: 'post-how-rockets-launch.html' }
+      ];
+
+      async function fetchCount(path) {
+        const res = await fetch(`${SITE}/counter/${encodeURIComponent(path)}.json`);
+        if (!res.ok) throw new Error('Request failed');
+        return res.json();
+      }
+
+      function renderTotal(data) {
+        const totalCard = document.getElementById('totalCard');
+        totalCard.innerHTML = `
+          <div class="total-stat">
+            <div class="num">${data.count}</div>
+            <div class="label">Total Pageviews</div>
+          </div>
+          <div class="total-stat">
+            <div class="num">${data.count_unique}</div>
+            <div class="label">Unique Visitors</div>
+          </div>
+        `;
+      }
+
+      function renderBreakdown(rows) {
+        const container = document.getElementById('pageBreakdown');
+        rows.sort((a, b) => Number(b.count.replace(/,/g, '')) - Number(a.count.replace(/,/g, '')));
+        container.innerHTML = rows.map(r => `
+          <div class="page-row">
+            <a href="${r.href}">${r.label}</a>
+            <div class="counts">
+              <span><strong>${r.count}</strong> views</span>
+              <span><strong>${r.count_unique}</strong> visitors</span>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      async function load() {
+        try {
+          const total = await fetchCount('TOTAL');
+          renderTotal(total);
+        } catch (e) {
+          document.getElementById('totalCard').innerHTML = '<div class="error-box">Couldn\'t load totals right now.</div>';
+        }
+
+        try {
+          const rows = await Promise.all(PAGES.map(async p => {
+            const data = await fetchCount(p.path);
+            return { ...p, count: data.count, count_unique: data.count_unique };
+          }));
+          renderBreakdown(rows);
+        } catch (e) {
+          document.getElementById('pageBreakdown').innerHTML = '<div class="error-box">Couldn\'t load the breakdown right now — try refreshing.</div>';
+        }
+      }
+
+      load();
+    })();
+  </script>
+
+</body>
+</html>
