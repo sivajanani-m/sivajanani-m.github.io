@@ -274,8 +274,9 @@
       ];
 
       async function fetchCount(path) {
+        // GoatCounter returns 404 (with a valid zero-count JSON body) for
+        // paths it hasn't recorded a hit for yet, so status is not checked here.
         const res = await fetch(`${SITE}/counter/${encodeURIComponent(path)}.json`);
-        if (!res.ok) throw new Error('Request failed');
         return res.json();
       }
 
