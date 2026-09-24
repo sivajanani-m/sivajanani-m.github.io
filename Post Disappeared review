@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Disappeared Review | From Fossils to Stars</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
+:root {
+--bg: #0f0e17;
+--surface: #1a1929;
+--accent1: #e8a87c;
+--accent2: #7ec8e3;
+--accent3: #a8d8a8;
+--text: #fffffe;
+--text-muted: #a7a9be;
+--border: #2e2d3d;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+background: var(--bg);
+color: var(--text);
+font-family: 'Inter', sans-serif;
+font-weight: 300;
+line-height: 1.8;
+}
+body::before {
+content: '';
+position: fixed;
+top: 0; left: 0;
+width: 100%; height: 100%;
+background-image:
+radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
+radial-gradient(1px 1px at 30% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+radial-gradient(1.5px 1.5px at 50% 10%, rgba(255,255,255,0.7) 0%, transparent 100%),
+radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+radial-gradient(1px 1px at 85% 25%, rgba(255,255,255,0.5) 0%, transparent 100%),
+radial-gradient(1px 1px at 20% 75%, rgba(255,255,255,0.4) 0%, transparent 100%),
+radial-gradient(1.5px 1.5px at 60% 85%, rgba(255,255,255,0.6) 0%, transparent 100%),
+radial-gradient(1px 1px at 90% 80%, rgba(255,255,255,0.3) 0%, transparent 100%);
+pointer-events: none;
+z-index: 0;
+}
+header {
+position: relative;
+z-index: 1;
+text-align: center;
+padding: 30px 20px;
+border-bottom: 1px solid var(--border);
+}
+header a {
+font-family: 'Playfair Display', serif;
+font-size: 1.1rem;
+background: linear-gradient(135deg, var(--accent1), var(--accent2));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-decoration: none;
+}
+nav {
+display: flex;
+justify-content: center;
+gap: 28px;
+padding: 16px 20px;
+position: relative;
+z-index: 1;
+border-bottom: 1px solid var(--border);
+}
+nav a {
+color: var(--text-muted);
+text-decoration: none;
+font-size: 0.85rem;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+}
+nav a:hover { color: var(--accent1); }
+article {
+position: relative;
+z-index: 1;
+max-width: 680px;
+margin: 0 auto;
+padding: 60px 20px 80px;
+}
+.post-meta {
+display: flex;
+align-items: center;
+gap: 12px;
+margin-bottom: 20px;
+flex-wrap: wrap;
+}
+.tag-pill {
+display: inline-block;
+padding: 3px 10px;
+border-radius: 20px;
+font-size: 0.7rem;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+font-weight: 500;
+background: rgba(168,216,168,0.15);
+color: var(--accent3);
+}
+.meta-text {
+font-size: 0.8rem;
+color: var(--text-muted);
+}
+h1 {
+font-family: 'Playfair Display', serif;
+font-size: clamp(1.8rem, 4vw, 2.6rem);
+font-weight: 700;
+line-height: 1.25;
+margin-bottom: 12px;
+}
+.post-intro {
+font-size: 1.05rem;
+color: var(--text-muted);
+font-style: italic;
+font-family: 'Playfair Display', serif;
+margin-bottom: 40px;
+padding-bottom: 28px;
+border-bottom: 1px solid var(--border);
+}
+.post-body p {
+margin-bottom: 22px;
+font-size: 1rem;
+color: #d8d8e8;
+}
+.post-body h2 {
+font-family: 'Playfair Display', serif;
+font-size: 1.3rem;
+color: var(--accent1);
+margin: 36px 0 14px;
+}
+.highlight-box {
+background: var(--surface);
+border-left: 3px solid var(--accent2);
+border-radius: 0 8px 8px 0;
+padding: 18px 22px;
+margin: 28px 0;
+font-size: 0.95rem;
+color: var(--text-muted);
+font-style: italic;
+}
+.rating {
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: 10px;
+padding: 24px;
+margin-top: 40px;
+text-align: center;
+}
+.rating h3 {
+font-family: 'Playfair Display', serif;
+font-size: 1rem;
+color: var(--text-muted);
+margin-bottom: 8px;
+}
+.stars {
+font-size: 1.8rem;
+letter-spacing: 4px;
+margin-bottom: 8px;
+}
+.rating-note {
+font-size: 0.85rem;
+color: var(--text-muted);
+}
+footer {
+position: relative;
+z-index: 1;
+text-align: center;
+padding: 30px 20px;
+border-top: 1px solid var(--border);
+font-size: 0.8rem;
+color: var(--text-muted);
+}
+</style>
+</head>
+<body>
+ 
+<header>
+<a href="index.html">From Fossils to Stars: Stories & Science</a>
+</header>
+ 
+<nav>
+<a href="index.html">Home</a>
+<a href="dinosaurs.html">Dinosaurs</a>
+<a href="space.html">Space</a>
+<a href="books.html">Books</a>
+<a href="soccer.html">Soccer</a>
+<a href="about.html">About</a>
+</nav>
+ 
+<article>
+ 
+<div class="post-meta">
+<span class="tag-pill">Books</span>
+<span class="meta-text">September 2026 &nbsp;·&nbsp; 4 min read</span>
+</div>
+ 
+<h1>Hard Choices in a Dangerous World: Disappeared</h1>
+ 
+<p class="post-intro">
+A reporter chasing the truth. A brother chasing easy money. And a city where both choices
+could get you killed.
+</p>
+ 
+<div class="post-body">
+ 
+<p>
+Pretty much this story is about Sara Zapata, whose best friend has been kidnapped by
+criminals in Juarez, Mexico. Sara works as a reporter and makes use of her job by drawing
+attention to girls who have been kidnapped in the city. As publicity increased, Sara and
+her family started getting threatened. Meanwhile, her younger brother Emiliano is being
+tempted into the drug trade by the promise of easy money. This leads to uncanny
+circumstances that they have to go through, and eventually the two of them have no choice
+but to risk crossing the desert into the United States to stay safe.
+</p>
+ 
+<h2>Two Siblings, Two Journeys</h2>
+<p>
+The author alternates between the two siblings' perspectives chapter by chapter. Sara's
+perspective moves fast and drives the plot, as she investigates and exposes the criminals.
+Emiliano's is more focused on his internal conflict — his temptation to join the "web" for
+money, and his feelings for Perla Rubi, a girl he likes.
+</p>
+ 
+<h2>Hard Choices</h2>
+<p>
+The characters go through hard choices during this time of their lives. Sara has to choose
+between staying safe and continuing to expose the truth about the kidnappings. While Sara
+has to do that, Emiliano has to choose between easy money or staying out of the criminal
+web and doing the right thing. Both siblings end up choosing family and each other over
+everything else, even when it means leaving their home country.
+</p>
+ 
+<div class="highlight-box">
+I really do like how the author introduces real world issues like danger to journalists,
+corruption, and how people get pulled into crime.
+</div>
+ 
+<h2>Final Thoughts</h2>
+<p>
+Overall, I really enjoyed this book and I think the ending was satisfying without being
+too predictable. I liked reading Sara's chapters a little more because of how fast paced
+and suspenseful they were, but Emiliano's struggle felt more real and relatable in a
+different way. One part that really stuck with me was seeing how easily someone could get
+pulled into something dangerous just because of the promise of money.
+</p>
+ 
+<p>
+I'd recommend this book to anyone who likes thrillers or true crime type stories.
+</p>
+ 
+<div class="rating">
+<h3>My Rating</h3>
+<div class="stars">★★★★☆</div>
+<p class="rating-note">4/5 — a tense, fast read with real emotional weight</p>
+</div>
+ 
+</div>
+ 
+</article>
+ 
+<footer>
+From Fossils to Stars: Stories & Science &nbsp;·&nbsp; Made with curiosity<br>
+<span style="font-size:0.75rem; margin-top:6px; display:inline-block;">© Sivajanani Mohanraj. Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--text-muted);">CC BY 4.0</a> — you may share with credit.</span>
+</footer>
+ 
+<script data-goatcounter="https://fossilstostars.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+ 
+</body>
+</html>
