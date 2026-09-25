@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -371,22 +370,11 @@
 
     <!-- ============================================================
          FEATURED POST
-         To update: change the tags, date, title, and description below
+         This fills in automatically from ALL_POSTS below — do not
+         edit this div directly, edit the ALL_POSTS array instead.
     ============================================================ -->
     <p class="section-label">✦ Featured Post</p>
-    <div class="featured">
-      <p class="post-meta">
-        <span class="tag-pill tag-books">Books</span>
-        August 2026 &nbsp;·&nbsp; 4 min read
-      </p>
-      <h2>I Was Not Ready for That Ending: The Unearthed, Book 1</h2>
-      <p>
-        A girl who just wants to do her job. A famous boy who just wants to be normal. An alien temple,
-        a mystery that keeps getting bigger, and a cliffhanger that had me literally staring at the
-        last page going "...seriously?"
-      </p>
-      <a href="post-unearthed-review.html" class="read-more">Read more →</a>
-    </div>
+    <div class="featured" id="featuredPost"></div>
  
     <!-- Quick about blurb -->
     <div class="about-box">
@@ -407,13 +395,32 @@
 
   <script>
     (function () {
-      // TO ADD A NEW POST: add an entry here so it's included in site-wide search.
+      // TO ADD A NEW POST: add one new object to the TOP of this array
+      // with that day's date (YYYY-MM-DD). The Featured Post section
+      // above and the search box both update automatically — nothing
+      // else on this page needs to change.
       const ALL_POSTS = [
-        { title: "I Was Not Ready for That Ending: The Unearthed, Book 1", desc: "A girl who just wants to do her job. A famous boy who just wants to be normal. An alien temple, a mystery that keeps getting bigger, and a cliffhanger that had me literally staring at the last page going \"...seriously?\"", url: "post-unearthed-review.html", section: "Books" },
-        { title: "Scientists Just Found a New Spinosaurus — and It Has a Sword on Its Head", desc: "A new species of one of the most famous dinosaurs ever was just named in 2026, and it came from one of the last places you'd expect: the Sahara Desert.", url: "post-spinosaurus-mirabilis.html", section: "Dinosaurs" },
-        { title: "How Does a Rocket Actually Launch?", desc: "I've been taking a rocket science course on Coursera from the University of Michigan, and it's been making me look at launches completely differently.", url: "post-how-rockets-launch.html", section: "Space" },
-        { title: "A SpaceX Rocket Just Crashed Into the Moon — And Nobody's Sure Whose Problem That Is", desc: "Two days ago, a SpaceX rocket crashed into the moon. On purpose? Nope. Accidentally? Completely. And the wild part is — nobody's really sure whose problem that is.", url: "post-spacex-moon-crash.html", section: "Space" }
+        { title: "Hard Choices and Harder Truths: Disappeared", desc: "A missing best friend. A brother tempted by easy money. And two siblings who end up with only one way out — across the desert.", url: "post-disappeared-review.html", section: "Books", tagClass: "tag-books", date: "2026-09-23", readTime: "4 min read" },
+        { title: "I Was Not Ready for That Ending: The Unearthed, Book 1", desc: "A girl who just wants to do her job. A famous boy who just wants to be normal. An alien temple, a mystery that keeps getting bigger, and a cliffhanger that had me literally staring at the last page going \"...seriously?\"", url: "post-unearthed-review.html", section: "Books", tagClass: "tag-books", date: "2026-08-15", readTime: "4 min read" },
+        { title: "Scientists Just Found a New Spinosaurus — and It Has a Sword on Its Head", desc: "A new species of one of the most famous dinosaurs ever was just named in 2026, and it came from one of the last places you'd expect: the Sahara Desert.", url: "post-spinosaurus-mirabilis.html", section: "Dinosaurs", tagClass: "tag-dino", date: "2026-07-10", readTime: "4 min read" },
+        { title: "How Does a Rocket Actually Launch?", desc: "I've been taking a rocket science course on Coursera from the University of Michigan, and it's been making me look at launches completely differently.", url: "post-how-rockets-launch.html", section: "Space", tagClass: "tag-space", date: "2026-06-20", readTime: "4 min read" },
+        { title: "A SpaceX Rocket Just Crashed Into the Moon — And Nobody's Sure Whose Problem That Is", desc: "Two days ago, a SpaceX rocket crashed into the moon. On purpose? Nope. Accidentally? Completely. And the wild part is — nobody's really sure whose problem that is.", url: "post-spacex-moon-crash.html", section: "Space", tagClass: "tag-space", date: "2026-05-05", readTime: "4 min read" }
       ];
+
+      function renderFeatured() {
+        const latest = ALL_POSTS.reduce((a, b) => new Date(a.date) > new Date(b.date) ? a : b);
+        const monthYear = new Date(latest.date + 'T00:00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+        document.getElementById('featuredPost').innerHTML = `
+          <p class="post-meta">
+            <span class="tag-pill ${latest.tagClass}">${latest.section}</span>
+            ${monthYear} &nbsp;·&nbsp; ${latest.readTime}
+          </p>
+          <h2>${latest.title}</h2>
+          <p>${latest.desc}</p>
+          <a href="${latest.url}" class="read-more">Read more →</a>
+        `;
+      }
+      renderFeatured();
 
       const STORAGE_KEY = 'fftsRecentSearches';
       const input = document.getElementById('siteSearch');
@@ -510,4 +517,3 @@
 
 </body>
 </html>
- 
