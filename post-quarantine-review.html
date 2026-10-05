@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quarantine Review | From Fossils to Stars</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
+:root {
+--bg: #0f0e17;
+--surface: #1a1929;
+--accent1: #e8a87c;
+--accent2: #7ec8e3;
+--accent3: #a8d8a8;
+--text: #fffffe;
+--text-muted: #a7a9be;
+--border: #2e2d3d;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+background: var(--bg);
+color: var(--text);
+font-family: 'Inter', sans-serif;
+font-weight: 300;
+line-height: 1.8;
+}
+body::before {
+content: '';
+position: fixed;
+top: 0; left: 0;
+width: 100%; height: 100%;
+background-image:
+radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
+radial-gradient(1px 1px at 30% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+radial-gradient(1.5px 1.5px at 50% 10%, rgba(255,255,255,0.7) 0%, transparent 100%),
+radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+radial-gradient(1px 1px at 85% 25%, rgba(255,255,255,0.5) 0%, transparent 100%),
+radial-gradient(1px 1px at 20% 75%, rgba(255,255,255,0.4) 0%, transparent 100%),
+radial-gradient(1.5px 1.5px at 60% 85%, rgba(255,255,255,0.6) 0%, transparent 100%),
+radial-gradient(1px 1px at 90% 80%, rgba(255,255,255,0.3) 0%, transparent 100%);
+pointer-events: none;
+z-index: 0;
+}
+header {
+position: relative;
+z-index: 1;
+text-align: center;
+padding: 30px 20px;
+border-bottom: 1px solid var(--border);
+}
+header a {
+font-family: 'Playfair Display', serif;
+font-size: 1.1rem;
+background: linear-gradient(135deg, var(--accent1), var(--accent2));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-decoration: none;
+}
+nav {
+display: flex;
+justify-content: center;
+gap: 28px;
+padding: 16px 20px;
+position: relative;
+z-index: 1;
+border-bottom: 1px solid var(--border);
+}
+nav a {
+color: var(--text-muted);
+text-decoration: none;
+font-size: 0.85rem;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+}
+nav a:hover { color: var(--accent1); }
+article {
+position: relative;
+z-index: 1;
+max-width: 680px;
+margin: 0 auto;
+padding: 60px 20px 80px;
+}
+.post-meta {
+display: flex;
+align-items: center;
+gap: 12px;
+margin-bottom: 20px;
+flex-wrap: wrap;
+}
+.tag-pill {
+display: inline-block;
+padding: 3px 10px;
+border-radius: 20px;
+font-size: 0.7rem;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+font-weight: 500;
+background: rgba(168,216,168,0.15);
+color: var(--accent3);
+}
+.meta-text {
+font-size: 0.8rem;
+color: var(--text-muted);
+}
+h1 {
+font-family: 'Playfair Display', serif;
+font-size: clamp(1.8rem, 4vw, 2.6rem);
+font-weight: 700;
+line-height: 1.25;
+margin-bottom: 12px;
+}
+.post-intro {
+font-size: 1.05rem;
+color: var(--text-muted);
+font-style: italic;
+font-family: 'Playfair Display', serif;
+margin-bottom: 40px;
+padding-bottom: 28px;
+border-bottom: 1px solid var(--border);
+}
+.post-body p {
+margin-bottom: 22px;
+font-size: 1rem;
+color: #d8d8e8;
+}
+.post-body h2 {
+font-family: 'Playfair Display', serif;
+font-size: 1.3rem;
+color: var(--accent1);
+margin: 36px 0 14px;
+}
+.highlight-box {
+background: var(--surface);
+border-left: 3px solid var(--accent2);
+border-radius: 0 8px 8px 0;
+padding: 18px 22px;
+margin: 28px 0;
+font-size: 0.95rem;
+color: var(--text-muted);
+font-style: italic;
+}
+.rating {
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: 10px;
+padding: 24px;
+margin-top: 40px;
+text-align: center;
+}
+.rating h3 {
+font-family: 'Playfair Display', serif;
+font-size: 1rem;
+color: var(--text-muted);
+margin-bottom: 8px;
+}
+.stars {
+font-size: 1.8rem;
+letter-spacing: 4px;
+margin-bottom: 8px;
+}
+.rating-note {
+font-size: 0.85rem;
+color: var(--text-muted);
+}
+footer {
+position: relative;
+z-index: 1;
+text-align: center;
+padding: 30px 20px;
+border-top: 1px solid var(--border);
+font-size: 0.8rem;
+color: var(--text-muted);
+}
+</style>
+</head>
+<body>
+ 
+<header>
+<a href="index.html">From Fossils to Stars: Stories & Science</a>
+</header>
+ 
+<nav>
+<a href="index.html">Home</a>
+<a href="dinosaurs.html">Dinosaurs</a>
+<a href="space.html">Space</a>
+<a href="books.html">Books</a>
+<a href="soccer.html">Soccer</a>
+<a href="about.html">About</a>
+</nav>
+ 
+<article>
+ 
+<div class="post-meta">
+<span class="tag-pill">Books</span>
+<span class="meta-text">October 2026 &nbsp;·&nbsp; 4 min read</span>
+</div>
+ 
+<h1>Survive the School: Quarantine, Book 1: The Loners</h1>
+ 
+<p class="post-intro">
+A school sealed off by the military. Gangs built out of high school cliques. And one
+loner trying to keep his little brother alive.
+</p>
+
+<div class="post-body">
+
+<p>
+Pretty much this story is about David Thorpe, a loner at McKinley High School. After a
+huge explosion at the school, David tries to help his English teacher, but the teacher
+dies right in front of him. A year later, a virus has infected all of the students. It
+only affects teenagers, makes them lose their hair, and makes them deadly to adults and
+children. The military has quarantined the school, and the teachers are gone.
+</p>
+
+<h2>Cliques Turned Into Gangs</h2>
+<p>
+Without any adults, the students formed gangs based on high school cliques, like the
+Varsity, the Freaks, and the Pretty Ones. Once a week the government drops food off, and
+the gangs fight over it. The rule is pretty simple: if you don't have a gang, you're as
+good as dead.
+</p>
+
+<div class="highlight-box">
+I really like how the author takes normal school social groups and turns them into
+something life or death.
+</div>
+
+<h2>David and Will</h2>
+<p>
+David doesn't have a gang. It's just him and his younger brother Will, who is epileptic.
+David has had to act like a parent ever since their mom died and their dad started
+drinking. This makes every decision harder, because he isn't only trying to survive for
+himself, he's trying to keep Will safe too.
+</p>
+
+<h2>Final Thoughts</h2>
+<p>
+Overall, I really enjoyed this book. It starts fast and it keeps going, so it was easy to
+keep reading. I thought the plot was stronger than the characters, but the relationship
+between David and Will was my favorite part.
+</p>
+
+<p>
+I'd recommend this book to anyone who likes dystopian stories and fast paced thrillers.
+</p>
+
+<div class="rating">
+<h3>My Rating</h3>
+<div class="stars">★★★★☆</div>
+<p class="rating-note">4/5 — a fast, intense read with a great brother story</p>
+</div>
+
+</div>
+
+</article>
+ 
+<footer>
+From Fossils to Stars: Stories & Science &nbsp;·&nbsp; Made with curiosity<br>
+<span style="font-size:0.75rem; margin-top:6px; display:inline-block;">© Sivajanani Mohanraj. Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--text-muted);">CC BY 4.0</a> — you may share with credit.</span>
+</footer>
+ 
+<script data-goatcounter="https://fossilstostars.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+ 
+</body>
+</html>
